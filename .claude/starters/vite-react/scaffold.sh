@@ -39,9 +39,12 @@ if [ "${2:-tailwind}" = css-modules ]; then
   sed -i '' -e "/@tailwindcss\/vite/d" -e "s/, tailwindcss()//" vite.config.ts
   sed -i '' "s/prettier-plugin-tailwindcss/prettier-plugin-css-order/" .prettierrc.json
   printf ':root {\n  color-scheme: light;\n}\n' > src/index.css
+  # The example feature keeps its markup; its Tailwind classes go (M1 replaces it anyway).
+  sed -i '' -E 's/ className="[^"]*"//' src/App.tsx src/features/greeting/GreetingForm.tsx
 fi
 
 npm install
+npx prettier --write . > /dev/null
 npx lefthook install
 npx playwright install chromium
 npm run check
