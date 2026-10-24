@@ -1,9 +1,10 @@
 import { site } from '@/app/lib/site'
+import Container from '@/app/ui/container'
 
 export default function Page() {
   return (
-    <div className="max-w-page py-section mx-auto px-5 md:px-8 lg:px-10">
+    <Container className="py-section">
       <h1 className="text-display">{site.hero.headline}</h1>
-    </div>
+    </Container>
   )
 }

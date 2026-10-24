@@ -3,6 +3,7 @@ import { site } from '@/app/lib/site'
 import { inter } from '@/app/ui/fonts'
 import SiteFooter from '@/app/ui/site-footer'
 import SiteHeader from '@/app/ui/site-header'
+import WebVitals from '@/app/ui/web-vitals'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -15,7 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="flex min-h-dvh flex-col">
         <a
           href="#main"
-          className="bg-primary text-small text-on-primary sr-only rounded-sm font-medium focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:inline-flex focus:h-11 focus:items-center focus:px-4"
+          className="sr-only rounded-sm bg-primary text-small font-medium text-on-primary focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:inline-flex focus:h-11 focus:items-center focus:px-4"
         >
           Skip to content
         </a>
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <SiteFooter />
+        {process.env.NODE_ENV === 'development' ? <WebVitals /> : null}
       </body>
     </html>
   )

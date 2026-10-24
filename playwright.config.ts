@@ -22,5 +22,7 @@ export default defineConfig({
     // Always a fresh build: a server left running from an earlier run would test old code.
     reuseExistingServer: false,
     timeout: 180_000,
+    // Test-only fixture projects are read in e2e runs, never in demo recordings (DEMO=1).
+    env: { CONTENT_FIXTURES: process.env.DEMO ? '' : '1' },
   },
 })

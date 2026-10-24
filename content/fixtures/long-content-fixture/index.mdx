@@ -1,0 +1,54 @@
+import cover from './cover.png'
+
+{/* Test-only content (read when CONTENT_FIXTURES=1): the longest values the schema allows. */}
+
+export const meta = {
+  title: 'A deliberately long project title that fills all sixty chars',
+  summary:
+    'One sentence written up to the very limit, long enough to test wrapping on a phone, with long words such as internationalisation and Supercalifragilistic in it.',
+  stack: [
+    'TanStack-Query-Devtools',
+    'Next.js',
+    'React',
+    'TypeScript',
+    'Tailwind CSS',
+    'Zod',
+    'Vitest',
+    'Playwright',
+  ],
+  cover,
+  coverAlt: 'A plain light-grey placeholder image.',
+  repoUrl: 'https://github.com/jovstern/portfolio',
+  liveUrl: 'https://example.com',
+  date: '2026-01',
+}
+
+## Overview
+
+A paragraph with an [internal link](/#projects), an external link to [example.com](https://example.com), an autolink https://example.com/a/very/long/path/that/should/wrap/instead/of/scrolling and `inline code`.
+
+## What I built
+
+- A list item.
+- A list item with a very long unbroken word: Pneumonoultramicroscopicsilicovolcanoconiosis.
+
+1. A numbered item.
+2. Another numbered item.
+
+### A third-level heading
+
+> A blockquote that runs on for long enough to wrap across more than one line on a phone.
+
+```ts
+const aVeryLongLineOfCodeThatMustScrollInsideItsOwnBlockRatherThanThePage = 'value that keeps going'
+```
+
+## Decisions
+
+| Column one                                      | Column two | Column three | Column four | Column five | Column six |
+| ----------------------------------------------- | ---------- | ------------ | ----------- | ----------- | ---------- |
+| A wide table that scrolls inside its own region | value      | value        | value       | value       | value      |
+
+## What I'd do next
+
+Nothing: this entry exists only for tests.

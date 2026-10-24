@@ -2,6 +2,7 @@ import { EnvelopeIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link'
 import { site } from '@/app/lib/site'
 import ButtonLink from '@/app/ui/button-link'
+import Container from '@/app/ui/container'
 import ExternalLink from '@/app/ui/external-link'
 import { GitHubIcon, LinkedInIcon } from '@/app/ui/icons'
 
@@ -17,12 +18,12 @@ const iconLink =
 // globals.css mirrors for scroll-padding-top.
 export default function SiteHeader() {
   return (
-    <header className="border-border bg-bg sticky top-0 z-40 border-b">
-      <div className="max-w-page mx-auto flex flex-wrap items-center px-5 md:px-8 lg:px-10">
+    <header className="sticky top-0 z-40 border-b border-border bg-bg">
+      <Container className="flex flex-wrap items-center">
         <div className="flex h-16 items-center">
           <Link
             href="/"
-            className="text-h3 text-text hover:text-body -ms-2 inline-flex h-11 items-center rounded-sm px-2 font-medium transition-colors"
+            className="-ms-2 inline-flex h-11 items-center rounded-sm px-2 text-h3 font-medium text-text transition-colors hover:text-body"
           >
             {site.name}
           </Link>
@@ -34,7 +35,7 @@ export default function SiteHeader() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-small text-body hover:text-text active:text-muted inline-flex h-11 items-center rounded-sm px-3 font-medium transition-colors"
+                  className="inline-flex h-11 items-center rounded-sm px-3 text-small font-medium text-body transition-colors hover:text-text active:text-muted"
                 >
                   {link.label}
                 </Link>
@@ -59,7 +60,7 @@ export default function SiteHeader() {
             <span className="max-sm:sr-only">Email me</span>
           </ButtonLink>
         </div>
-      </div>
+      </Container>
     </header>
   )
 }

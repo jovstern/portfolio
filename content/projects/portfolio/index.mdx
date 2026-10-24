@@ -1,0 +1,31 @@
+import cover from './cover.png'
+
+export const meta = {
+  title: 'Portfolio',
+  summary:
+    'This site: a statically rendered Next.js 16 portfolio with one MDX file per project, checked at build time.',
+  stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'MDX', 'Zod', 'Playwright'],
+  cover,
+  coverAlt: 'A plain light-grey placeholder until the real screenshot is added.',
+  repoUrl: 'https://github.com/jovstern/portfolio',
+  date: '2026-10',
+}
+
+## Overview
+
+I wanted a portfolio that answers two questions within a few seconds: what I do, and what I've built. It also had to be a fair sample of how I work, so the code is public and held to the same bar as anything I'd ship at a job.
+
+## What I built
+
+A home page with a short intro, the projects and an about section, plus one page per project. Every route is prerendered with Next.js 16 and Cache Components, so a visit is a static file and almost no JavaScript. Each project is a single MDX file: a typed `meta` export feeds the card, and the body is the case study you're reading.
+
+## Decisions
+
+- **MDX in the repo, no CMS.** The site changes a few times a year, so a commit is the right workflow. Adding a project is one folder, not new UI.
+- **Validation at build time.** Zod checks every project's `meta`. A missing cover, an `http` link or a 200-character summary fails the build, so it never reaches production.
+- **Design tokens first.** Colours, type, radii and spacing are CSS variables exposed through Tailwind 4, drawn from a study of Kinde's site, with a dark theme that follows the system.
+- **Budgets, not hopes.** Lighthouse, Core Web Vitals, bundle size and axe run on every milestone, and a miss is treated like a bug.
+
+## What I'd do next
+
+Add real screenshots and short demo videos for each project, then a custom domain. If writing grows beyond case studies, a headless CMS can sit behind the same data layer without touching the UI.

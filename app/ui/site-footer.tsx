@@ -1,4 +1,5 @@
 import { site } from '@/app/lib/site'
+import Container from '@/app/ui/container'
 import ExternalLink from '@/app/ui/external-link'
 import { GitHubIcon, LinkedInIcon } from '@/app/ui/icons'
 
@@ -7,12 +8,12 @@ const socialLink =
 
 export default function SiteFooter() {
   return (
-    <footer id="contact" className="border-border border-t">
-      <div className="max-w-page py-section mx-auto px-5 md:px-8 lg:px-10">
+    <footer id="contact" className="border-t border-border">
+      <Container className="py-section">
         <h2 className="text-h2">Let&apos;s talk</h2>
         <a
           href={`mailto:${site.email}`}
-          className="text-lead text-text decoration-border-strong hover:decoration-text active:text-body mt-6 inline-flex min-h-11 items-center rounded-sm font-medium break-all underline underline-offset-6 transition-colors"
+          className="mt-6 inline-flex min-h-11 items-center rounded-sm text-lead font-medium break-all text-text underline decoration-border-strong underline-offset-6 transition-colors hover:decoration-text active:text-body"
         >
           {site.email}
         </a>
@@ -30,7 +31,7 @@ export default function SiteFooter() {
             </ExternalLink>
           </li>
         </ul>
-      </div>
+      </Container>
     </footer>
   )
 }
