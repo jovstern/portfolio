@@ -15,7 +15,7 @@ Filled in by `/build` once the stack is chosen (dev, check, e2e, database script
   decides, one approval of spec and plan, then one milestone at a time. Each milestone is a
   branch `mN-<slug>` and a PR on `jovstern/portfolio` with a code review, UI review,
   metrics report and demo GIF. **The user merges every PR; Claude waits for the merge.**
-- Every agent runs on Fable 5.1 (`fable`).
+- Every agent runs on Opus 5.5 (`opus`).
 - Superpowers preferences (they override the skills' defaults):
   - Brainstorming: questions in `AskUserQuestion` batches of up to 4, as many rounds as
     needed; the architecture is the user's decision; one approval of spec and plan together.

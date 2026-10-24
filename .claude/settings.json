@@ -70,5 +70,5 @@
       "Read(./.env.*)"
     ]
   },
-  "model": "fable"
+  "model": "opus"
 }

@@ -15,8 +15,8 @@ Read first: `CLAUDE.md`, `.claude/skills/stack-conventions/SKILL.md`,
 `.claude/skills/quality-gates/SKILL.md`, `.claude/skills/ui-craft/SKILL.md`,
 `.claude/skills/metrics/SKILL.md`.
 
-**Models:** Fable 5.1 for everything — this session, every implementer, every reviewer,
-the milestone review, `ui-reviewer` and `observer`. Set `model: "fable"` explicitly on
+**Models:** Opus 5.5 for everything — this session, every implementer, every reviewer,
+the milestone review, `ui-reviewer` and `observer`. Set `model: "opus"` explicitly on
 every dispatch (an omitted model may fall back to another default). Never a smaller model.
 
 **Branches:** the default branch is `master` (protected); every milestone merges into it.
@@ -107,12 +107,12 @@ Use `superpowers:writing-plans`, with these overrides:
   (new integration, auth, unfamiliar API) about 15–25 min. Per milestone, add about 20–35
   min for the three reviews, the fix wave, the gates and the demo, and about 10–15 min of the
   user's review. The first milestone also carries scaffold and setup (about 10–15 min).
-  These were measured on Opus; after M1, re-scale the remaining estimates by M1's
+  After M1, re-scale the remaining estimates by M1's
   actual/estimated ratio and say so in its PR.
 - **Global Constraints** repeat the rules that matter for this stack. Any `useReducer`,
   Route Handler, context, Zustand, TanStack Query or extra dependency has a line naming
   where and why.
-- **Before showing the user:** dispatch a fresh Fable reviewer (general-purpose) on the spec
+- **Before showing the user:** dispatch a fresh Opus reviewer (general-purpose) on the spec
   and plan against the requirements, `stack-conventions`, `ui-craft`, `metrics` and
   `quality-gates`: gaps, wrong order, risky tasks, missing states or tests. Fix what it
   finds.
@@ -141,7 +141,7 @@ Use `superpowers:subagent-driven-development`, with these overrides:
 ### End of each milestone: three reviews, fix, demo, PR, wait
 
 1. **Reviews, in parallel:**
-   - the milestone's whole-diff code review on Fable (`requesting-code-review`'s
+   - the milestone's whole-diff code review on Opus (`requesting-code-review`'s
      `code-reviewer.md`, on `git merge-base master HEAD..HEAD`, pointed at the ledger's
      deferred minors);
    - the `ui-reviewer` agent on the screens this milestone changed (skip if no UI changed);
