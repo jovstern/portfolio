@@ -8,7 +8,7 @@ import StatusPill from '@/app/ui/home/status-pill'
 import { GitHubIcon } from '@/app/ui/icons'
 
 const iconLink =
-  'inline-flex size-11 items-center justify-center gap-0.5 rounded-sm text-muted transition-colors hover:bg-surface hover:text-text active:bg-border'
+  'inline-flex size-11 items-center justify-center gap-1 rounded-sm text-muted transition-colors hover:bg-surface hover:text-text active:bg-border'
 
 export default function Hero({ site }: { site: Site }) {
   return (
@@ -29,7 +29,7 @@ export default function Hero({ site }: { site: Site }) {
             LinkedIn / CV
           </ButtonLink>
         </div>
-        <div className="-ms-3 mt-6 flex gap-1">
+        <div className="-ms-0.5 mt-6 flex gap-1">
           <ExternalLink href={site.links.github} aria-label="GitHub" className={iconLink}>
             <GitHubIcon className="size-5" />
           </ExternalLink>

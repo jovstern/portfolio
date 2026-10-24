@@ -122,6 +122,10 @@
   --text-h2: clamp(2rem, 1.4rem + 2.6vw, 3.5rem);
   --text-h2--line-height: 1.05;
   --text-h2--letter-spacing: -0.025em;
+  /* Case-study section headings: between the lead and the page h2. */
+  --text-subhead: 1.5rem;
+  --text-subhead--line-height: 1.25;
+  --text-subhead--letter-spacing: -0.02em;
   --text-h3: 1.25rem;
   --text-h3--line-height: 1.3;
   --text-h3--letter-spacing: -0.015em;

@@ -20,14 +20,14 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <Image
           src={project.cover}
           alt={project.coverAlt}
-          sizes="(min-width: 768px) 34rem, 100vw"
+          sizes="(min-width: 1024px) 34rem, (min-width: 768px) 50vw, 100vw"
           placeholder={project.cover.blurDataURL ? 'blur' : 'empty'}
           // Filter, not an overlay: an overlay token would dim in light but brighten in dark.
           className="size-full object-cover transition-[filter] group-hover:brightness-96"
         />
       </div>
       <div className="flex grow flex-col px-3 pt-5 pb-2">
-        <h3 className="text-h3">
+        <h3 className="text-h3 wrap-break-word">
           <Link
             href={`/projects/${project.slug}`}
             data-card-link
@@ -36,7 +36,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             {project.title}
           </Link>
         </h3>
-        <p className="mt-2">{project.summary}</p>
+        <p className="mt-2 wrap-break-word">{project.summary}</p>
         <div className="mt-3">
           <StackList stack={project.stack} />
         </div>

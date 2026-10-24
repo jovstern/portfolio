@@ -24,7 +24,7 @@ export default function ButtonLink({
   className,
 }: ButtonLinkProps) {
   const classes = clsx(
-    'inline-flex h-11 items-center justify-center gap-2 rounded-sm px-4 text-small font-medium transition-colors',
+    'inline-flex h-11 items-center justify-center gap-1 rounded-sm px-4 text-small font-medium transition-colors',
     variants[variant],
     className,
   )

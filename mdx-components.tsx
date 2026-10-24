@@ -9,16 +9,17 @@ const link =
 
 function Anchor({ href = '', className, children, ...props }: ComponentProps<'a'>) {
   const classes = clsx(link, className)
-  if (href.startsWith('/') || href.startsWith('#')) {
+  // Only same-origin paths go through next/link; `//host` is protocol-relative, so off-site.
+  if (href.startsWith('/') && !href.startsWith('//')) {
     return (
       <Link href={href} className={classes} {...props}>
         {children}
       </Link>
     )
   }
-  if (/^https?:\/\//.test(href)) {
+  if (/^(https?:)?\/\//.test(href)) {
     return (
-      <ExternalLink href={href} className={classes}>
+      <ExternalLink href={href} className={classes} {...props}>
         {children}
       </ExternalLink>
     )
@@ -33,10 +34,10 @@ function Anchor({ href = '', className, children, ...props }: ComponentProps<'a'
 
 const components = {
   h2: ({ className, ...props }) => (
-    <h2 className={clsx('mt-12 text-h3 wrap-break-word first:mt-0', className)} {...props} />
+    <h2 className={clsx('mt-14 text-subhead wrap-break-word first:mt-0', className)} {...props} />
   ),
   h3: ({ className, ...props }) => (
-    <h3 className={clsx('mt-8 text-base wrap-break-word first:mt-0', className)} {...props} />
+    <h3 className={clsx('mt-8 text-h3 wrap-break-word first:mt-0', className)} {...props} />
   ),
   p: ({ className, ...props }) => (
     <p className={clsx('mt-4 wrap-break-word first:mt-0', className)} {...props} />

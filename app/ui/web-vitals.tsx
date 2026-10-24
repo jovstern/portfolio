@@ -5,7 +5,8 @@ import { logger } from '@/app/lib/logger'
 
 type Metric = Parameters<Parameters<typeof useReportWebVitals>[0]>[0]
 
-// Module scope keeps the reference stable, so each metric is reported once.
+// Module scope keeps the callback's reference stable across renders. In development, Strict
+// Mode mounts the component twice, so a metric can be logged twice there.
 function logMetric({ name, value, rating, navigationType }: Metric) {
   logger.info('web-vital', { name, value, rating, navigationType })
 }
