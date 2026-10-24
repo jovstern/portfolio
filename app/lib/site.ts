@@ -28,6 +28,8 @@ export const site: Site = SiteSchema.parse({
     headline: 'I build fast, accessible web apps with React and Next.js.',
     lead: "I turn designs into interfaces that load quickly, work with a keyboard and hold up under real content. Here are a few things I've built.",
   },
+  projectsIntro: "Things I've designed, built and shipped, each with its code.",
+  projectsEmpty: 'Projects are on their way. Meanwhile, my code is on GitHub.',
   about: {
     paragraphs: [
       "I'm a frontend engineer working mostly in React, Next.js and TypeScript. I like the part of the job where a design becomes something people use every day: the layout holds at every width, the focus order makes sense and nothing jumps while the page loads.",

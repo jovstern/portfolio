@@ -14,6 +14,8 @@ export const testSite: Site = {
     headline: 'I make test headlines.',
     lead: 'A lead sentence for the test.',
   },
+  projectsIntro: 'An intro line for the test.',
+  projectsEmpty: 'Nothing here yet. My code is on GitHub.',
   about: { paragraphs: ['The first paragraph.', 'The second paragraph.'] },
   skills: [
     { group: 'Languages', items: ['TypeScript', 'CSS'] },

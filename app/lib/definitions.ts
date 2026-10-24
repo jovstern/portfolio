@@ -14,6 +14,9 @@ export const SiteSchema = z.object({
   links: z.object({ github: httpsUrl, linkedin: httpsUrl }),
   openToWork: z.boolean(),
   hero: z.object({ greeting: text, headline: text, lead: text }),
+  projectsIntro: text,
+  /** Shown in place of the grid while there are no published projects. */
+  projectsEmpty: text,
   about: z.object({ paragraphs: z.array(text).min(1) }),
   skills: z.array(z.object({ group: text, items: z.array(text).min(1) })).min(1),
 })
