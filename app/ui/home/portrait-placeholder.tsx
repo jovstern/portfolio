@@ -1,9 +1,9 @@
 type PortraitPlaceholderProps = { label: string; className?: string }
 
 /**
- * A seated figure in the theme's strong border colour, at the real cut-out's 1600×1715
- * aspect, so swapping in the photo moves nothing. The head reaches the top of the box, so it
- * rises above the arch as the cut-out will.
+ * A head-and-shoulders bust in the theme's strong border colour, at the real cut-out's
+ * 1600×1715 aspect, so swapping in the photo moves nothing. The shoulders run past the arch's
+ * sides, so the arch crops them as it will crop the cut-out.
  */
 export default function PortraitPlaceholder({ label, className }: PortraitPlaceholderProps) {
   return (
@@ -14,10 +14,8 @@ export default function PortraitPlaceholder({ label, className }: PortraitPlaceh
       fill="var(--color-border-strong)"
       className={className}
     >
-      <circle cx="800" cy="235" r="175" />
-      <rect x="730" y="355" width="140" height="200" rx="48" />
-      <path d="M560 575c80-45 160-55 240-55s160 10 240 55c90 52 120 140 110 240l-90 565H540l-90-565c-10-100 20-188 110-240Z" />
-      <path d="M220 1715c0-195 160-365 400-415 80-15 280-15 360 0 240 50 400 220 400 415Z" />
+      <path d="M800 400c-98 0-176 92-176 214s78 226 176 226 176-104 176-226-78-214-176-214Z" />
+      <path d="M712 780c4 96-8 168-60 214-74 64-226 80-370 126C120 1172 20 1320 0 1500v215h1600v-215c-20-180-120-328-282-380-144-46-296-62-370-126-52-46-64-118-60-214-38 40-82 60-88 60s-50-20-88-60Z" />
     </svg>
   )
 }

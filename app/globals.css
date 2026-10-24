@@ -57,7 +57,7 @@
     --color-text-muted: #a1a1a1;
     --color-accent: #7c9cff;
     --color-accent-hover: #a3bbff;
-    --color-accent-tint: #16204a;
+    --color-accent-tint: #141a2c;
     --color-primary: #f5f5f5;
     --color-on-primary: #0f0f0f;
     --color-success: #4ade80;
@@ -76,7 +76,7 @@
   --color-text-muted: #a1a1a1;
   --color-accent: #7c9cff;
   --color-accent-hover: #a3bbff;
-  --color-accent-tint: #16204a;
+  --color-accent-tint: #141a2c;
   --color-primary: #f5f5f5;
   --color-on-primary: #0f0f0f;
   --color-success: #4ade80;
@@ -152,6 +152,17 @@
   --spacing-section: var(--space-section);
   --container-page: var(--container-page);
   --container-narrow: var(--container-narrow);
+}
+
+/* The portrait arch (spec §6): a true semicircle on top of the 11:12 box (horizontal radius
+   50% of the width, vertical 11/24 of the height) and the 24 px foot. Elliptical radii that
+   fit the box keep CSS's corner-overlap rule from shrinking the foot, as 9999px would. The
+   clip follows the foot and the sides but leaves room above, so the figure's shoulders are
+   cropped by the arch while the head can rise over its top. */
+@utility shape-arch {
+  border-radius: 50% 50% var(--radius-lg) var(--radius-lg) / 45.8333% 45.8333% var(--radius-lg)
+    var(--radius-lg);
+  clip-path: inset(-15% 0 0 0 round 0 0 var(--radius-lg) var(--radius-lg));
 }
 
 @layer base {

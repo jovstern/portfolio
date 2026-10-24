@@ -10,10 +10,10 @@ const figure = 'absolute bottom-0 left-1/2 h-auto w-[108%] max-w-none -translate
 
 type PortraitProps = { name: string }
 
-/** The arch (spec §6): a rounded top, a 24 px foot, 11:12, in the accent tint. */
+/** The arch (spec §6): a semicircular top, a 24 px foot, 11:12, in the accent tint. */
 export default function Portrait({ name }: PortraitProps) {
   return (
-    <div className="relative mx-auto aspect-11/12 w-full max-w-88 rounded-t-full rounded-b-lg bg-accent-tint lg:max-w-none">
+    <div className="relative mx-auto aspect-11/12 w-full max-w-88 shape-arch bg-accent-tint lg:max-w-none">
       {HAS_PORTRAIT ? (
         <Image
           src="/portrait.png"
