@@ -3,14 +3,18 @@ import { site } from '@/app/lib/site'
 import { inter } from '@/app/ui/fonts'
 import SiteFooter from '@/app/ui/site-footer'
 import SiteHeader from '@/app/ui/site-header'
-import WebVitals from '@/app/ui/web-vitals'
 import './globals.css'
 
 export const metadata: Metadata = {
   title: { template: `%s | ${site.name}`, default: `${site.name} | ${site.role}` },
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  // Imported only in development: a static import ships the dev-only component's code (and
+  // the web-vitals library) in every production page, even though it never renders there.
+  const WebVitals =
+    process.env.NODE_ENV === 'development' ? (await import('@/app/ui/web-vitals')).default : null
+
   return (
     <html lang="en" className={inter.variable}>
       <body className="flex min-h-dvh flex-col">
@@ -25,7 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <SiteFooter />
-        {process.env.NODE_ENV === 'development' ? <WebVitals /> : null}
+        {WebVitals ? <WebVitals /> : null}
       </body>
     </html>
   )
