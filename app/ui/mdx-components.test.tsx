@@ -3,6 +3,7 @@ import type { ComponentType } from 'react'
 import { describe, expect, it } from 'vitest'
 // Not a hook in practice: it returns a constant map, so a plain alias reads it once.
 import { useMDXComponents as getMDXComponents } from '@/mdx-components'
+import { newTabName } from '@/app/ui/test-names'
 
 const Anchor = getMDXComponents().a as ComponentType<React.ComponentProps<'a'>>
 
@@ -14,7 +15,7 @@ describe('MDX links', () => {
 
   it('treats protocol-relative URLs as off-site', () => {
     render(<Anchor href="//example.com/page">Example</Anchor>)
-    expect(screen.getByRole('link', { name: 'Example (opens in a new tab)' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: newTabName('Example') })).toHaveAttribute(
       'target',
       '_blank',
     )
@@ -26,7 +27,7 @@ describe('MDX links', () => {
         Example
       </Anchor>,
     )
-    expect(screen.getByRole('link', { name: 'Example (opens in a new tab)' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: newTabName('Example') })).toHaveAttribute(
       'title',
       'Example site',
     )

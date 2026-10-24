@@ -25,17 +25,19 @@ export default function ExternalLink({
       aria-label={ariaLabel ? `${ariaLabel} ${NEW_TAB}` : undefined}
     >
       {children}
-      {/* The notice and its space come before the arrow, so nothing visible follows it. The
-          space stays a bare text node: accessible-name algorithms trim each element's text,
-          so inside the span it would be lost. In a flex link it collapses; in prose it is the
-          gap before the arrow. */}
-      {ariaLabel ? null : (
-        <>
-          {' '}
-          <span className="sr-only">{NEW_TAB}</span>
-        </>
-      )}
-      <ArrowUpRightIcon aria-hidden="true" className="inline-block size-[1em] shrink-0" />
+      {/* The notice and its space sit with the arrow in one nowrap span, so the arrow never
+          wraps onto a line of its own and nothing visible follows it. In a flex link the
+          leading space collapses; in prose it is the gap before the arrow. */}
+      <span className="whitespace-nowrap">
+        {ariaLabel ? null : (
+          <>
+            {' '}
+            <span className="sr-only">{NEW_TAB}</span>
+          </>
+        )}
+        {/* Inline now (not a flex item), so it is lowered by hand onto the label's centre. */}
+        <ArrowUpRightIcon aria-hidden="true" className="inline-block size-[1em] align-[-0.125em]" />
+      </span>
     </a>
   )
 }

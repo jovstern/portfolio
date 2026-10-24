@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 import Hero from './hero'
 import { testSite } from './test-site'
+import { newTabName } from '@/app/ui/test-names'
 
 describe('Hero', () => {
   it('has one h1 with the headline', () => {
@@ -28,7 +29,7 @@ describe('Hero', () => {
 
   it('opens "LinkedIn / CV" in a new tab', () => {
     render(<Hero site={testSite} />)
-    const link = screen.getByRole('link', { name: 'LinkedIn / CV (opens in a new tab)' })
+    const link = screen.getByRole('link', { name: newTabName('LinkedIn / CV') })
     expect(link).toHaveAttribute('href', testSite.links.linkedin)
     expect(link).toHaveAttribute('target', '_blank')
     expect(link).toHaveAttribute('rel', 'noopener noreferrer')

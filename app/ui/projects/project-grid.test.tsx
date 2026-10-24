@@ -1,6 +1,7 @@
 import { render, screen, within } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 import { testSite } from '@/app/ui/home/test-site'
+import { newTabName } from '@/app/ui/test-names'
 import ProjectGrid from './project-grid'
 import { testProject } from './test-project'
 
@@ -8,7 +9,7 @@ describe('ProjectGrid', () => {
   it('shows the empty state with a GitHub link, and no list, when there are no projects', () => {
     render(<ProjectGrid projects={[]} site={testSite} />)
     expect(screen.getByText(testSite.projectsEmpty)).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'GitHub (opens in a new tab)' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: newTabName('GitHub') })).toHaveAttribute(
       'href',
       testSite.links.github,
     )
