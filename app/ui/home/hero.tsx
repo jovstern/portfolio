@@ -14,12 +14,12 @@ export default function Hero({ site }: { site: Site }) {
   return (
     <Container
       as="section"
-      className="grid gap-16 pt-12 pb-section lg:grid-cols-12 lg:items-center lg:gap-10"
+      className="grid gap-16 py-section lg:grid-cols-12 lg:items-center lg:gap-10"
     >
       <div className="lg:col-span-7">
         {site.openToWork ? <StatusPill /> : null}
         <p className="mt-6 text-lead text-muted">{site.hero.greeting}</p>
-        <h1 className="mt-3 text-display">{site.hero.headline}</h1>
+        <h1 className="mt-3 text-display lg:text-display-hero">{site.hero.headline}</h1>
         <p className="mt-6 max-w-xl text-lead text-body">{site.hero.lead}</p>
         <div className="mt-10 flex flex-wrap gap-3">
           <ButtonLink href="#projects" variant="primary">

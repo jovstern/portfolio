@@ -113,6 +113,10 @@
   --text-display: clamp(2.75rem, 1.6rem + 5.2vw, 6rem);
   --text-display--line-height: 0.95;
   --text-display--letter-spacing: -0.03em;
+  /* The hero h1 at lg+, where it shares the row with the portrait (7 of 12 columns). */
+  --text-display-hero: clamp(3rem, 1.5rem + 3.2vw, 4.75rem);
+  --text-display-hero--line-height: 0.95;
+  --text-display-hero--letter-spacing: -0.03em;
   --text-h2: clamp(2rem, 1.4rem + 2.6vw, 3.5rem);
   --text-h2--line-height: 1.05;
   --text-h2--letter-spacing: -0.025em;
