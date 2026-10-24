@@ -17,6 +17,8 @@ export const SiteSchema = z.object({
   projectsIntro: text,
   /** Shown in place of the grid while there are no published projects. */
   projectsEmpty: text,
+  /** The line under the 404 heading. */
+  notFound: text,
   about: z.object({ paragraphs: z.array(text).min(1) }),
   skills: z.array(z.object({ group: text, items: z.array(text).min(1) })).min(1),
 })

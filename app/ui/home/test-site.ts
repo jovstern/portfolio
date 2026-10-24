@@ -16,6 +16,7 @@ export const testSite: Site = {
   },
   projectsIntro: 'An intro line for the test.',
   projectsEmpty: 'Nothing here yet. My code is on GitHub.',
+  notFound: 'Nothing at this address.',
   about: { paragraphs: ['The first paragraph.', 'The second paragraph.'] },
   skills: [
     { group: 'Languages', items: ['TypeScript', 'CSS'] },

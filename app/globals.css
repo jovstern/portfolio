@@ -31,6 +31,8 @@
 
   --space-section: clamp(4rem, 2rem + 8vw, 7.5rem);
   --container-page: 72rem;
+  /* The project page's header and case study (spec §6). Not `prose`: Tailwind's 65ch stays. */
+  --container-narrow: 44rem;
 
   /* The sticky header: a 64 px row plus the 44 px nav row on phones, plus its 1 px border. */
   --header-height: calc(6.75rem + 1px);
@@ -149,6 +151,7 @@
 
   --spacing-section: var(--space-section);
   --container-page: var(--container-page);
+  --container-narrow: var(--container-narrow);
 }
 
 @layer base {

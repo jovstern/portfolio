@@ -13,6 +13,7 @@ const validSite = {
   hero: { greeting: 'Hi', headline: 'A headline', lead: 'A lead.' },
   projectsIntro: 'An intro.',
   projectsEmpty: 'Nothing yet.',
+  notFound: 'Not here.',
   about: { paragraphs: ['A paragraph.'] },
   skills: [{ group: 'Languages', items: ['TypeScript'] }],
 }
