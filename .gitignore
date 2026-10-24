@@ -6,3 +6,13 @@
 .env*
 !.env.example
 node_modules/
+/test-results/
+/playwright-report/
+/coverage/
+
+# Next.js
+/.next/
+/out/
+next-env.d.ts
+*.tsbuildinfo
+.vercel
