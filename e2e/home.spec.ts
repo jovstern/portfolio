@@ -5,6 +5,12 @@ test('the home page has exactly one h1', async ({ page }) => {
   await expect(page.getByRole('heading', { level: 1 })).toHaveCount(1)
 })
 
+test('the home page has a meta description', async ({ page }) => {
+  await page.goto('/')
+  const description = await page.locator('meta[name="description"]').getAttribute('content')
+  expect(description?.trim()).toBeTruthy()
+})
+
 test('a keyboard focus ring never flashes an outline', async ({ page }) => {
   await page.goto('/')
   const target = page.getByRole('link', { name: 'View projects', exact: true })

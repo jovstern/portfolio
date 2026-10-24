@@ -7,6 +7,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: { template: `%s | ${site.name}`, default: `${site.name} | ${site.role}` },
+  description: site.hero.lead,
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
