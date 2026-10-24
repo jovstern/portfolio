@@ -12,7 +12,7 @@ const navLinks = [
 ]
 
 const iconLink =
-  'inline-flex h-11 items-center gap-0.5 rounded-sm px-2.5 text-small text-muted transition-colors hover:text-text active:text-body'
+  'inline-flex h-11 items-center gap-1 rounded-sm px-2.5 text-small text-muted transition-colors hover:bg-surface hover:text-text active:bg-border'
 
 // Row heights here (h-16, plus the h-11 nav row on phones) are what --header-height in
 // globals.css mirrors for scroll-padding-top.
@@ -23,7 +23,7 @@ export default function SiteHeader() {
         <div className="flex h-16 items-center">
           <Link
             href="/"
-            className="-ms-2 inline-flex h-11 items-center rounded-sm px-2 text-h3 font-medium text-text transition-colors hover:text-body"
+            className="-ms-2 inline-flex h-11 items-center rounded-sm px-2 text-h3 font-medium text-text transition-colors hover:text-muted active:text-body"
           >
             {site.name}
           </Link>
@@ -35,7 +35,7 @@ export default function SiteHeader() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="inline-flex h-11 items-center rounded-sm px-3 text-small font-medium text-body transition-colors hover:text-text active:text-muted"
+                  className="inline-flex h-11 items-center rounded-sm px-3 text-small font-medium text-body transition-colors hover:bg-surface hover:text-text active:bg-border"
                 >
                   {link.label}
                 </Link>
@@ -53,7 +53,7 @@ export default function SiteHeader() {
           </ExternalLink>
           <ButtonLink
             href={`mailto:${site.email}`}
-            variant="primary"
+            variant="secondary"
             className="ms-1 max-sm:w-11 max-sm:px-0"
           >
             <EnvelopeIcon aria-hidden="true" className="size-5 sm:hidden" />
