@@ -1,10 +1,9 @@
-import GreetingForm from '@/app/ui/greeting-form'
+import { site } from '@/app/lib/site'
 
 export default function Page() {
   return (
-    <main className="mx-auto flex max-w-md flex-col gap-6 p-8">
-      <h1 className="text-2xl font-semibold">portfolio</h1>
-      <GreetingForm />
-    </main>
+    <div className="max-w-page py-section mx-auto px-5 md:px-8 lg:px-10">
+      <h1 className="text-display">{site.hero.headline}</h1>
+    </div>
   )
 }
