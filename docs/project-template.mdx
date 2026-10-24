@@ -1,14 +1,17 @@
+import cover from './cover.png'
 // Project template. To add a project:
 // 1. Create content/projects/<slug>/. The slug is the folder name (lower-case words joined
-// by hyphens, e.g. my-project) and becomes the URL /projects/<slug>.
+//    by hyphens, e.g. my-project) and becomes the URL /projects/<slug>.
 // 2. Copy this file there as index.mdx and put cover.png (16:10, e.g. 1600x1000) beside it.
 // 3. Fill in `meta`. The build checks it against ProjectMetaSchema in app/lib/definitions.ts
-// and fails, naming the slug and the field, if anything is wrong.
-import Image from 'next/image'
-import cover from './cover.png'
-// Images in the case study are imported the same way, so each one has its size and is
-// served as AVIF/WebP. Markdown images (![alt](src)) fail the build on purpose.
-import screenshot from './screenshot.png'
+//    and fails, naming the slug and the field, if anything is wrong.
+//
+// Images in the case study: markdown images (![alt](src)) fail the build on purpose, because
+// they have no size. Import the file instead (it must exist in this folder, or the build
+// fails), then render it with next/image so it gets its size and AVIF/WebP:
+//   import Image from 'next/image'
+//   import screenshot from './screenshot.png'
+//   <Image src={screenshot} alt="What the screenshot shows" sizes="(min-width: 44rem) 44rem, 100vw" />
 
 export const meta = {
   // 1-60 characters.
@@ -40,12 +43,6 @@ What the project is, who it is for and what problem it solves.
 ## What I built
 
 The main features and the parts I'm proudest of.
-
-<Image
-  src={screenshot}
-  alt="Describe what the screenshot shows"
-  sizes="(min-width: 44rem) 44rem, 100vw"
-/>
 
 ## Decisions
 
