@@ -6,7 +6,8 @@ const BUDGET_BYTES = 180 * 1024
 
 for (const path of ['/', '/projects/portfolio']) {
   test(`${path} loads at most 180 kB of gzipped JS`, async ({ page }) => {
-    await page.goto(path, { waitUntil: 'load' })
+    const response = await page.goto(path, { waitUntil: 'load' })
+    expect(response?.status()).toBe(200)
     const urls = await page.evaluate(() => {
       // nomodule scripts are legacy polyfills a modern browser never downloads.
       const scripts = Array.from(

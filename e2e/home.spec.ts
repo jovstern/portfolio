@@ -2,7 +2,7 @@ import { expect, test } from './fixtures'
 
 test('the home page has exactly one h1', async ({ page }) => {
   await page.goto('/')
-  await expect(page.locator('h1')).toHaveCount(1)
+  await expect(page.getByRole('heading', { level: 1 })).toHaveCount(1)
 })
 
 test('"View projects" lands on the projects heading, below the sticky header', async ({ page }) => {

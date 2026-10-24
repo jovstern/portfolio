@@ -32,15 +32,19 @@ test('external links open in a new tab with rel noopener', async ({ page }) => {
   await expect(offSite).toHaveCount(0)
 })
 
-for (const path of ['/projects/does-not-exist', '/projects/Foo']) {
-  test(`${path} responds 404 with the not-found page`, async ({ page }) => {
-    const response = await page.goto(path)
-    expect(response?.status()).toBe(404)
-    await expect(
-      page.getByRole('main').getByRole('heading', { level: 1, name: "This page doesn't exist" }),
-    ).toBeVisible()
-  })
-}
+test.describe('unknown slugs', () => {
+  test.use({ allowDocument404: true })
+
+  for (const path of ['/projects/does-not-exist', '/projects/Foo']) {
+    test(`${path} responds 404 with the not-found page`, async ({ page }) => {
+      const response = await page.goto(path)
+      expect(response?.status()).toBe(404)
+      await expect(
+        page.getByRole('main').getByRole('heading', { level: 1, name: "This page doesn't exist" }),
+      ).toBeVisible()
+    })
+  }
+})
 
 test('a trailing slash redirects to the canonical project URL', async ({ page }) => {
   const response = await page.goto('/projects/portfolio/')

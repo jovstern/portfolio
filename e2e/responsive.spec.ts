@@ -10,7 +10,8 @@ for (const width of widths) {
 
     for (const path of paths) {
       test(`${path} has no horizontal scroll`, async ({ page }) => {
-        await page.goto(path, { waitUntil: 'load' })
+        const response = await page.goto(path, { waitUntil: 'load' })
+        expect(response?.status()).toBe(200)
         await page.evaluate(() => document.fonts.ready)
         const { scrollWidth, innerWidth } = await page.evaluate(() => ({
           scrollWidth: document.documentElement.scrollWidth,
@@ -26,7 +27,8 @@ test.describe('at 360×740', () => {
   test.use({ viewport: { width: 360, height: 740 } })
 
   test('the hero headline is fully visible above the fold', async ({ page }) => {
-    await page.goto('/', { waitUntil: 'load' })
+    const response = await page.goto('/', { waitUntil: 'load' })
+    expect(response?.status()).toBe(200)
     await page.evaluate(() => document.fonts.ready)
     await expect(page.getByRole('heading', { level: 1 })).toBeInViewport({ ratio: 1 })
   })
