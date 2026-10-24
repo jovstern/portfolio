@@ -1,7 +1,7 @@
 # The kit
 
 How every project is built with Claude Code: Superpowers for the method, plus this layer for
-the house rules, the agents and the flow. Every agent runs on Opus.
+the house rules, the agents and the flow. Every agent runs on Fable 5.1. The default branch is `master`.
 
 ## Commands
 
@@ -14,13 +14,13 @@ the house rules, the agents and the flow. Every agent runs on Opus.
 
 | Role | Who | Model |
 |---|---|---|
-| Planner and coordinator: questions, architecture, spec, plan, dispatching | the main session | Opus |
-| Plan reviewer: checks spec and plan before you see them | a fresh subagent | Opus |
-| Implementer, one per task, test-driven | Superpowers subagent | Opus |
-| Task reviewer: spec compliance and code quality per task | Superpowers subagent | Opus |
-| Milestone code review: the whole diff | Superpowers `code-reviewer` | Opus |
-| UI/UX review: screenshots at 3 widths, keyboard walk-through, states | `agents/ui-reviewer.md` | Opus |
-| Metrics: Lighthouse, Web Vitals, bundle size, axe, API latency, logs | `agents/observer.md` | Opus |
+| Planner and coordinator: questions, architecture, spec, plan, dispatching | the main session | Fable |
+| Plan reviewer: checks spec and plan before you see them | a fresh subagent | Fable |
+| Implementer, one per task, test-driven | Superpowers subagent | Fable |
+| Task reviewer: spec compliance and code quality per task | Superpowers subagent | Fable |
+| Milestone code review: the whole diff | Superpowers `code-reviewer` | Fable |
+| UI/UX review: screenshots at 3 widths, keyboard walk-through, states | `agents/ui-reviewer.md` | Fable |
+| Metrics: Lighthouse, Web Vitals, bundle size, axe, API latency, logs | `agents/observer.md` | Fable |
 | **You:** answers, the architecture decision, plan approval, every merge | | |
 
 ## Where the rules live
@@ -30,7 +30,7 @@ the house rules, the agents and the flow. Every agent runs on Opus.
 - `skills/ui-craft/` — the bar for a sharp UI and simple UX.
 - `skills/metrics/` — budgets, instrumentation, how the observer measures.
 - `skills/quality-gates/` — the definition of done.
-- `skills/pr-demo/` — demo GIFs on the `pr-media` branch; `protect-main.sh`.
+- `skills/pr-demo/` — demo GIFs on the `pr-media` branch; `protect-master.sh`.
 - `starters/nextjs`, `starters/vite-react` — scaffolds with lint, types, Vitest,
   Playwright (console errors fail tests), CI and git hooks; Tailwind or CSS Modules.
 

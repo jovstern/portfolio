@@ -15,7 +15,7 @@ Filled in by `/build` once the stack is chosen (dev, check, e2e, database script
   decides, one approval of spec and plan, then one milestone at a time. Each milestone is a
   branch `mN-<slug>` and a PR on `jovstern/__PROJECT_NAME__` with a code review, UI review,
   metrics report and demo GIF. **The user merges every PR; Claude waits for the merge.**
-- Every agent runs on Opus.
+- Every agent runs on Fable 5.1 (`fable`).
 - Superpowers preferences (they override the skills' defaults):
   - Brainstorming: questions in `AskUserQuestion` batches of up to 4, as many rounds as
     needed; the architecture is the user's decision; one approval of spec and plan together.
@@ -39,6 +39,6 @@ Filled in by `/build` once the stack is chosen (dev, check, e2e, database script
 
 - Follow `.claude/skills/stack-conventions/SKILL.md` (and the stack files the spec names),
   `ui-craft`, `metrics` and `quality-gates`.
-- Never push to `main` or merge a PR. Never bypass a hook or check; never skip or delete a
+- Never push to `master` or merge a PR. Never bypass a hook or check; never skip or delete a
   failing test.
 - Ask before changing lint, TypeScript, framework or test configuration.

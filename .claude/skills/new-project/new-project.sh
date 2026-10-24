@@ -22,7 +22,7 @@ printf '.claude/settings.local.json\n.superpowers/\n.metrics/\n.DS_Store\n.idea/
   > "$DEST/.gitignore"
 
 cd "$DEST"
-git init -q -b main
+git init -q -b master
 git add -A
 git commit -qm "chore: start $NAME from the kit"
 # The Figma MCP for this folder only; it asks to log in the first time it is used.
