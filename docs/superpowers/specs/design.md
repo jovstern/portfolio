@@ -146,8 +146,8 @@ There is no write path (no forms, actions or API).
 Shared shell (`app/layout.tsx`): skip link → `#main`; **header** (sticky, `--color-bg` with a
 1 px bottom hairline; no scroll listener. Contents: wordmark `site.name` (link home; "Yoav"
 until the full name is confirmed) · nav: Projects, About ·
-right: icon links GitHub ↗ and LinkedIn ↗, the theme toggle (M2), and a primary button
-**Email me** (`mailto:`; from `sm` down it shrinks to an envelope icon button with the same
+right: icon links GitHub ↗ and LinkedIn ↗, the theme toggle (M2), and a *secondary* button
+**Email me** (secondary so every view keeps one primary action; M1 review ruling) (`mailto:`; from `sm` down it shrinks to an envelope icon button with the same
 accessible name)); `<main id="main" tabIndex={-1}>`, with `scroll-padding-top` equal to the
 header height so anchored headings are never hidden under it; **footer** `#contact` (h2
 "Let's talk", the email as a large link with a copy button (M2), LinkedIn, GitHub; no
@@ -166,20 +166,23 @@ phones the nav (Projects, About) moves to a second row (no hamburger: only 2 ite
      e.g. "I build fast, accessible web apps with React and Next.js." → lead (one or two
      sentences) → CTAs (primary "View projects" → `#projects`; secondary "LinkedIn / CV" ↗) →
      a small row of GitHub and email icon links. **Portrait:** an arch (rounded top
-     `border-radius: 9999px 9999px var(--radius-lg) var(--radius-lg)`, `aspect-ratio: 4/5`,
+     elliptical top radii `50% / 45.83%` (a true semicircle on the 11:12 box) and a
+     `--radius-lg` foot, `aspect-ratio: 11/12` (M1 ruling: with the 0.93:1 asset at 108% width,
+     4/5 could not give the overflow),
      fill `--color-accent-tint`) with the cut-out PNG bottom-aligned inside it, 108% of the
      arch's width, rising above its top edge by about 6%. The open hand points toward the
      text. Placeholder: a neutral silhouette (an inline SVG component filled with
      `--color-border-strong`, so it follows the theme) in the same box and aspect, with
      `role="img"` and a label.
   2. **Projects** `#projects`: `h2` "Projects" + one-line intro; a grid of `ProjectCard`s.
-     The card is Kinde-style: cover in a `--color-surface` panel (radius 16, aspect 16/10,
+     The card is Kinde-style: a 24 px (`--radius-lg`) outer frame with 8 px padding around
+     the cover in a `--color-surface` panel (radius 16, concentric; aspect 16/10,
      `object-fit: cover`), then the title (`h3`, and the card's main link to the project page,
      stretched over the card with `::after`), summary, stack as muted text joined by " · ",
      and icon links "Live ↗" and "Code ↗" above the stretched link (`relative z-10`). Hover:
      the border goes from `--color-border` to `--color-border-strong`, the title gets an
      underline, the cover dims 4% (no movement). Focus: when the *title link* has
-     `:focus-visible`, a 2 px accent ring goes around the whole card, offset 4 px; Live and
+     `:focus-visible`, the `--shadow-focus` ring goes around the whole card; Live and
      Code get their own rings.
   3. **About** `#about`: `h2` "About" in the left column; right column: bio paragraphs
      (max 65ch), then skills as a 2–3 column grid of plain groups (group name 14 px/500 muted,
@@ -213,7 +216,7 @@ phones the nav (Projects, About) moves to a second row (no hamburger: only 2 ite
   (`dynamicParams` doesn't exist under Cache Components). An unknown slug renders on
   request, `getProject` returns `null`, and `notFound()` serves the 404 with status 404.
   No adjacent projects hides the nav; a draft is a 404 in production.
-- **Layout:** header and prose `max-w-[44rem]`; media up to `72rem`. Phone: actions stack
+- **Layout:** header and prose `max-w-narrow` (`--container-narrow: 44rem`); media up to `72rem`. Phone: actions stack
   full-width; prev/next stacked. lg: prev/next side by side.
 
 ### `not-found` (404) and `error`
@@ -253,7 +256,7 @@ checked (WCAG ratio in brackets).
 | `--color-text-muted` | `#636363` (6.0; 5.5 on surface) | `#A1A1A1` (7.6; 7.0 on surface) | meta, captions |
 | `--color-accent` | `#2457F5` (5.6; 5.1 on surface) | `#7C9CFF` (7.6; 6.9 on surface) | links in prose, focus ring |
 | `--color-accent-hover` | `#1F4AD6` (7.0) | `#A3BBFF` | link hover |
-| `--color-accent-tint` | `#E9EEFE` | `#16204A` | the portrait's arch |
+| `--color-accent-tint` | `#E9EEFE` | `#141A2C` | the portrait's arch |
 | `--color-primary` / `--color-on-primary` | `#0F0F0F` / `#FFFFFF` (19.2) | `#F5F5F5` / `#0F0F0F` (17.6) | primary button |
 | `--color-success` | `#0B7A3E` (5.4) | `#4ADE80` (11.3) | the availability dot (always with text) |
 
@@ -263,8 +266,10 @@ Headings are weight 500 with negative tracking, as on Kinde; body is 400.
 
 | Token | Size | Line height | Tracking |
 |---|---|---|---|
-| `display` (hero h1) | `clamp(2.75rem, 1.6rem + 5.2vw, 6rem)` | 0.95 | -0.03em |
+| `display` (hero h1, phones) | `clamp(2.75rem, 1.6rem + 5.2vw, 6rem)` | 0.95 | -0.03em |
+| `display-hero` (hero h1, lg+; M1 ruling) | `clamp(3rem, 1.5rem + 3.2vw, 4.75rem)` | 0.95 | -0.03em |
 | `h2` | `clamp(2rem, 1.4rem + 2.6vw, 3.5rem)` | 1.05 | -0.025em |
+| `subhead` (MDX h2) | `1.5rem` | 1.25 | -0.02em |
 | `h3` | `1.25rem` | 1.3 | -0.015em |
 | `lead` | `clamp(1.125rem, 1rem + 0.5vw, 1.5rem)` | 1.35 | -0.01em |
 | `body` | `1rem` | 1.5 | -0.005em |
@@ -275,7 +280,7 @@ Headings are weight 500 with negative tracking, as on Kinde; body is 400.
 
 **Space and shape.** A 4 px grid (Tailwind's default spacing). Section padding
 `clamp(4rem, 2rem + 8vw, 7.5rem)`. Container `72rem`. Radii: `--radius-sm` 8 px (buttons,
-chips, inputs), `--radius-md` 16 px (cards, media), `--radius-lg` 24 px (the arch's foot),
+chips, inputs), `--radius-md` 16 px (media, covers), `--radius-lg` 24 px (card frames, the arch's foot),
 `--radius-full`. No shadows except `--shadow-focus: 0 0 0 2px var(--color-bg), 0 0 0 4px
 var(--color-accent)`. Buttons are 44 px tall (touch), `px-4`, 14–15 px/500; primary =
 `--color-primary` fill, secondary = `--color-surface` fill. Breakpoints are Tailwind's

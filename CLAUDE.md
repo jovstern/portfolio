@@ -7,7 +7,14 @@ Built with `/build` (this kit: `.claude/README.md`). The spec, plan and decision
 
 ## Commands
 
-Filled in by `/build` once the stack is chosen (dev, check, e2e, database scripts).
+Next.js 16.4 + Tailwind 4, static; content in `content/projects/<slug>/index.mdx`. No database.
+
+- `npm run dev`: dev server
+- `npm run check`: format, lint, types, unit tests (Vitest), build. Run before every commit
+- `npm run e2e`: Playwright against a fresh production build on :3100, with the test
+  fixtures on (`CONTENT_FIXTURES=1`); console errors and 5xx responses fail tests
+- `DEMO=1 npx playwright test e2e/demo-m<N>.spec.ts`: record a milestone demo without
+  fixtures (then `bash .claude/skills/pr-demo/make-demo.sh <N> <video>`)
 
 ## How work happens
 
