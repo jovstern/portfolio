@@ -1,3 +1,7 @@
 milestone,route,perf,a11y,lcp_ms,cls,tbt_ms,js_kb
 m01,/,98,100,2338,0,32,140.8
 m01,/projects/portfolio,99.5,100,1955,0,32,140.8
+m01-postfix,/,99,100,2179,0,32,140.8
+m01-postfix,/projects/portfolio,99,100,2255,0,33,140.8
+m01-inlinecss-rejected,/,98,100,2412,0,33,140.8
+m01-inlinecss-rejected,/projects/portfolio,98,100,2488,0,18,140.8

@@ -170,7 +170,9 @@ phones the nav (Projects, About) moves to a second row (no hamburger: only 2 ite
      `--radius-lg` foot, `aspect-ratio: 11/12` (M1 ruling: with the 0.93:1 asset at 108% width,
      4/5 could not give the overflow),
      fill `--color-accent-tint`) with the cut-out PNG bottom-aligned inside it, 108% of the
-     arch's width, rising above its top edge by about 6%. The open hand points toward the
+     arch's width, rising above its top edge by about 6%. The arch clips the figure at its sides and
+     foot (`clip-path` with a 15% allowance above), so only the head breaks the outline; re-judge
+     against the real asset in M2 T3 (the open hand must not be cut). The open hand points toward the
      text. Placeholder: a neutral silhouette (an inline SVG component filled with
      `--color-border-strong`, so it follows the theme) in the same box and aspect, with
      `role="img"` and a label.
