@@ -15,7 +15,7 @@ export default function ProjectMedia({ project }: ProjectMediaProps) {
         // The largest element above the fold on wide screens, so it should not wait to load.
         loading="eager"
         fetchPriority="high"
-        className="h-auto w-full"
+        className="h-auto w-full brightness-(--cover-brightness)"
       />
     </div>
   )

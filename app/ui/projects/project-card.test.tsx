@@ -45,4 +45,16 @@ describe('ProjectCard', () => {
     const stack = screen.getByRole('list', { name: 'Tech stack' })
     expect(stack).toHaveTextContent('TypeScript · React')
   })
+
+  it('labels a draft with "Draft", outside the title link', () => {
+    render(<ProjectCard project={{ ...project, draft: true }} />)
+    expect(screen.getByText('Draft')).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: project.title })).not.toHaveTextContent('Draft')
+    expect(screen.getByRole('heading', { level: 3, name: project.title })).toBeInTheDocument()
+  })
+
+  it('shows no draft label on a published project', () => {
+    render(<ProjectCard project={project} />)
+    expect(screen.queryByText('Draft')).not.toBeInTheDocument()
+  })
 })

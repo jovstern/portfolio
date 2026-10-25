@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { Project } from '@/app/lib/definitions'
 import ExternalLink from '@/app/ui/external-link'
+import DraftLabel from '@/app/ui/projects/draft-label'
 import StackList from '@/app/ui/projects/stack-list'
 
 const actionLink =
@@ -20,22 +21,26 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <Image
           src={project.cover}
           alt={project.coverAlt}
-          sizes="(min-width: 1024px) 34rem, (min-width: 768px) 50vw, 100vw"
+          sizes="(min-width: 1280px) 20rem, (min-width: 768px) 50vw, 100vw"
           placeholder={project.cover.blurDataURL ? 'blur' : 'empty'}
-          // Filter, not an overlay: an overlay token would dim in light but brighten in dark.
-          className="size-full object-cover transition-[filter] group-hover:brightness-96"
+          // Filter, not an overlay: an overlay token would dim in light but brighten in dark. The
+          // hover dim multiplies the theme's cover brightness, so it still shows in dark.
+          className="size-full object-cover brightness-(--cover-brightness) transition-[filter] group-hover:brightness-[calc(var(--cover-brightness)*0.96)]"
         />
       </div>
       <div className="flex grow flex-col px-3 pt-5 pb-2">
-        <h3 className="text-h3 wrap-break-word">
-          <Link
-            href={`/projects/${project.slug}`}
-            data-card-link
-            className="underline decoration-transparent underline-offset-4 transition-[text-decoration-color] group-hover:decoration-current after:absolute after:inset-0 after:rounded-lg focus-visible:shadow-none"
-          >
-            {project.title}
-          </Link>
-        </h3>
+        <div className="flex items-baseline justify-between gap-3">
+          <h3 className="min-w-0 text-h3 wrap-break-word">
+            <Link
+              href={`/projects/${project.slug}`}
+              data-card-link
+              className="underline decoration-transparent underline-offset-4 transition-[text-decoration-color] group-hover:decoration-current after:absolute after:inset-0 after:rounded-lg focus-visible:shadow-none"
+            >
+              {project.title}
+            </Link>
+          </h3>
+          {project.draft ? <DraftLabel /> : null}
+        </div>
         <p className="mt-2 wrap-break-word">{project.summary}</p>
         <div className="mt-3">
           <StackList stack={project.stack} />

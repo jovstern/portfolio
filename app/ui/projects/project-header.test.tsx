@@ -42,4 +42,15 @@ describe('ProjectHeader', () => {
     render(<ProjectHeader project={project} />)
     expect(screen.getByRole('list', { name: 'Tech stack' })).toHaveTextContent('TypeScript · React')
   })
+
+  it('labels a draft with "Draft", outside the h1', () => {
+    render(<ProjectHeader project={{ ...project, draft: true }} />)
+    expect(screen.getByText('Draft')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 1, name: project.title })).toBeInTheDocument()
+  })
+
+  it('shows no draft label on a published project', () => {
+    render(<ProjectHeader project={project} />)
+    expect(screen.queryByText('Draft')).not.toBeInTheDocument()
+  })
 })

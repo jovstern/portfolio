@@ -7,7 +7,7 @@ type ProjectGridProps = {
   site: Site
 }
 
-/** One column, two from md. A single or last odd card keeps its half width. */
+/** One column, two from md, three from xl. A last short row keeps its cards' width. */
 export default function ProjectGrid({ projects, site }: ProjectGridProps) {
   if (projects.length === 0) {
     return (
@@ -21,7 +21,7 @@ export default function ProjectGrid({ projects, site }: ProjectGridProps) {
   }
 
   return (
-    <ul aria-label="Projects" className="grid gap-10 md:grid-cols-2">
+    <ul aria-label="Projects" className="grid gap-10 md:grid-cols-2 xl:grid-cols-3">
       {projects.map((project) => (
         <li key={project.slug}>
           <ProjectCard project={project} />
