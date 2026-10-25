@@ -183,7 +183,9 @@ phones the nav (Projects, About) moves to a second row (no hamburger: only 2 ite
      stretched over the card with `::after`), summary, stack as muted text joined by " · ",
      and icon links "Live ↗" and "Code ↗" above the stretched link (`relative z-10`). Hover:
      the border goes from `--color-border` to `--color-border-strong`, the title gets an
-     underline, the cover dims 4% (no movement). Focus: when the *title link* has
+     underline, the cover dims 4% (no movement). In the dark theme covers sit about 10% dimmer so
+     light screenshots don't glare. Draft entries (previews only) show a small muted "Draft" pill
+     on the card and the project header. Focus: when the *title link* has
      `:focus-visible`, the `--shadow-focus` ring goes around the whole card; Live and
      Code get their own rings.
   3. **About** `#about`: `h2` "About" in the left column; right column: bio paragraphs
@@ -197,7 +199,8 @@ phones the nav (Projects, About) moves to a second row (no hamburger: only 2 ite
 - **Layout:** container `max-w-[72rem]`, gutters 20 px (phone) / 32 px (md) / 40 px (lg).
   Phone: hero stacked: text, then the portrait at `min(100%, 22rem)` centred; projects in
   1 column; about stacked. **lg+**: hero in a 12-column grid, text in columns 1–7 and the
-  portrait in 8–12, vertically centred; projects in 2 columns, gap 40 px; about with the
+  portrait in 8–12, vertically centred; projects in 2 columns from `md` and 3 from `xl` (owner decision after previewing 9 projects),
+  gap 40 px; about with the
   heading in columns 1–4 and the content in 5–12. Section padding
   `clamp(4rem, 2rem + 8vw, 7.5rem)` block, with a hairline between sections.
 
