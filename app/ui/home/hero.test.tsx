@@ -2,7 +2,6 @@ import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 import Hero from './hero'
 import { testSite } from './test-site'
-import { newTabName } from '@/app/ui/test-names'
 
 describe('Hero', () => {
   it('has one h1 with the headline', () => {
@@ -27,24 +26,11 @@ describe('Hero', () => {
     expect(screen.getByRole('link', { name: 'View projects' })).toHaveAttribute('href', '#projects')
   })
 
-  it('opens "LinkedIn / CV" in a new tab', () => {
+  it('has an "Email me" link to the email address, in the same tab', () => {
     render(<Hero site={testSite} />)
-    const link = screen.getByRole('link', { name: newTabName('LinkedIn / CV') })
-    expect(link).toHaveAttribute('href', testSite.links.linkedin)
-    expect(link).toHaveAttribute('target', '_blank')
-    expect(link).toHaveAttribute('rel', 'noopener noreferrer')
-  })
-
-  it('has GitHub and email icon links with accessible names', () => {
-    render(<Hero site={testSite} />)
-    expect(screen.getByRole('link', { name: 'GitHub (opens in a new tab)' })).toHaveAttribute(
-      'href',
-      testSite.links.github,
-    )
-    expect(screen.getByRole('link', { name: `Email ${testSite.name}` })).toHaveAttribute(
-      'href',
-      `mailto:${testSite.email}`,
-    )
+    const link = screen.getByRole('link', { name: 'Email me' })
+    expect(link).toHaveAttribute('href', `mailto:${testSite.email}`)
+    expect(link).not.toHaveAttribute('target')
   })
 
   it('shows the portrait as a named image', () => {

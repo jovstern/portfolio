@@ -10,8 +10,8 @@ export function resolveSiteUrl({ siteUrl, vercelProductionUrl }: SiteUrlEnv): st
 }
 
 export const site: Site = SiteSchema.parse({
-  name: 'Yoav',
-  role: 'Frontend engineer',
+  name: 'Yoav.',
+  role: 'Full-Stack Engineer',
   location: 'REPLACE-ME',
   url: resolveSiteUrl({
     siteUrl: process.env.NEXT_PUBLIC_SITE_URL,
@@ -24,7 +24,7 @@ export const site: Site = SiteSchema.parse({
   },
   openToWork: true,
   hero: {
-    greeting: "Hi, I'm Yoav",
+    greeting: "Hi, I'm Yoav, a Full-Stack Engineer",
     headline: 'I build fast, accessible web apps with React and Next.js.',
     lead: "I turn designs into interfaces that load quickly, work with a keyboard and hold up under real content. Here are a few things I've built.",
   },

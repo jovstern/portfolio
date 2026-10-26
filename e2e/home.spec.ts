@@ -15,8 +15,8 @@ test('an external text link keeps the space before its new-tab notice', async ({
   await page.goto('/')
   await expect(
     page
-      .getByRole('main')
-      .getByRole('link', { name: 'LinkedIn / CV (opens in a new tab)', exact: true }),
+      .getByRole('contentinfo')
+      .getByRole('link', { name: 'LinkedIn (opens in a new tab)', exact: true }),
   ).toBeVisible()
 })
 

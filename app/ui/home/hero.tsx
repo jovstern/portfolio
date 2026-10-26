@@ -1,14 +1,8 @@
-import { EnvelopeIcon } from '@heroicons/react/20/solid'
 import type { Site } from '@/app/lib/definitions'
 import ButtonLink from '@/app/ui/button-link'
 import Container from '@/app/ui/container'
-import ExternalLink from '@/app/ui/external-link'
 import Portrait from '@/app/ui/home/portrait'
 import StatusPill from '@/app/ui/home/status-pill'
-import { GitHubIcon } from '@/app/ui/icons'
-
-const iconLink =
-  'inline-flex size-11 items-center justify-center gap-1 rounded-sm text-muted transition-colors hover:bg-surface hover:text-text active:bg-border'
 
 export default function Hero({ site }: { site: Site }) {
   return (
@@ -25,17 +19,9 @@ export default function Hero({ site }: { site: Site }) {
           <ButtonLink href="#projects" variant="primary">
             View projects
           </ButtonLink>
-          <ButtonLink href={site.links.linkedin} variant="secondary" external>
-            LinkedIn / CV
+          <ButtonLink href={`mailto:${site.email}`} variant="secondary">
+            Email me
           </ButtonLink>
-        </div>
-        <div className="-ms-0.5 mt-6 flex gap-1">
-          <ExternalLink href={site.links.github} aria-label="GitHub" className={iconLink}>
-            <GitHubIcon className="size-5" />
-          </ExternalLink>
-          <a href={`mailto:${site.email}`} aria-label={`Email ${site.name}`} className={iconLink}>
-            <EnvelopeIcon aria-hidden="true" className="size-5" />
-          </a>
         </div>
       </div>
       <div className="lg:col-span-5">

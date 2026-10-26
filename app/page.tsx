@@ -2,6 +2,7 @@ import { getProjects } from '@/app/lib/data'
 import { site } from '@/app/lib/site'
 import Container from '@/app/ui/container'
 import About from '@/app/ui/home/about'
+import Skills from '@/app/ui/home/skills'
 import Hero from '@/app/ui/home/hero'
 import ProjectGrid from '@/app/ui/projects/project-grid'
 
@@ -24,6 +25,7 @@ export default async function Page() {
         </Container>
       </section>
       <About site={site} />
+      <Skills site={site} />
     </>
   )
 }

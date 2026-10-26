@@ -1,7 +1,5 @@
-import { EnvelopeIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link'
 import { site } from '@/app/lib/site'
-import ButtonLink from '@/app/ui/button-link'
 import Container from '@/app/ui/container'
 import ExternalLink from '@/app/ui/external-link'
 import { GitHubIcon, LinkedInIcon } from '@/app/ui/icons'
@@ -9,6 +7,7 @@ import { GitHubIcon, LinkedInIcon } from '@/app/ui/icons'
 const navLinks = [
   { href: '/#projects', label: 'Projects' },
   { href: '/#about', label: 'About' },
+  { href: '/#skills', label: 'Skills' },
 ]
 
 const iconLink =
@@ -51,14 +50,6 @@ export default function SiteHeader() {
           <ExternalLink href={site.links.linkedin} aria-label="LinkedIn" className={iconLink}>
             <LinkedInIcon className="size-5" />
           </ExternalLink>
-          <ButtonLink
-            href={`mailto:${site.email}`}
-            variant="secondary"
-            className="ms-1 max-sm:w-11 max-sm:px-0"
-          >
-            <EnvelopeIcon aria-hidden="true" className="size-5 sm:hidden" />
-            <span className="max-sm:sr-only">Email me</span>
-          </ButtonLink>
         </div>
       </Container>
     </header>

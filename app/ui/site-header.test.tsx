@@ -9,11 +9,12 @@ describe('SiteHeader', () => {
     expect(screen.getByRole('link', { name: site.name })).toHaveAttribute('href', '/')
   })
 
-  it('has Projects and About in the main navigation', () => {
+  it('has Projects, About and Skills in the main navigation', () => {
     render(<SiteHeader />)
     const nav = within(screen.getByRole('navigation', { name: 'Main' }))
     expect(nav.getByRole('link', { name: 'Projects' })).toHaveAttribute('href', '/#projects')
     expect(nav.getByRole('link', { name: 'About' })).toHaveAttribute('href', '/#about')
+    expect(nav.getByRole('link', { name: 'Skills' })).toHaveAttribute('href', '/#skills')
   })
 
   it('names the icon-only GitHub and LinkedIn links and opens them in a new tab', () => {
@@ -26,13 +27,5 @@ describe('SiteHeader', () => {
       expect(link).toHaveAttribute('target', '_blank')
       expect(link).toHaveAttribute('rel', 'noopener noreferrer')
     }
-  })
-
-  it('has an Email me link to the email address', () => {
-    render(<SiteHeader />)
-    expect(screen.getByRole('link', { name: 'Email me' })).toHaveAttribute(
-      'href',
-      `mailto:${site.email}`,
-    )
   })
 })
