@@ -1,0 +1,30 @@
+import cover from './cover.png'
+
+export const meta = {
+  title: 'Design Token Playground',
+  summary: 'Edit colour, type and spacing tokens and watch a sample UI update live.',
+  stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Style Dictionary', 'Zustand'],
+  cover,
+  coverAlt:
+    'Placeholder cover: abstract layout of a header bar, a grid of six colour swatches and a side panel of controls.',
+  repoUrl: 'https://github.com/jovstern/design-token-playground',
+  liveUrl: 'https://design-token-playground.vercel.app',
+  date: '2026-08',
+  draft: true,
+}
+
+## Overview
+
+Placeholder case study. A playground for designers and engineers to try design tokens before committing them to a system.
+
+## What I built
+
+A token editor with live preview, contrast checks on every colour pair and an export to CSS variables and JSON. This text stands in until the real project is written up.
+
+## Decisions
+
+- **Tokens as plain JSON.** It keeps the format tool-agnostic, at the cost of writing my own validation.
+
+## What I’d do next
+
+Import tokens straight from Figma variables and share a playground by URL. Placeholder copy.

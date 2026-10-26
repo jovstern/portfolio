@@ -1,0 +1,238 @@
+@import 'tailwindcss';
+
+/* Design tokens: spec §7, verbatim. Light is the default; dark comes from the system until
+   the theme toggle (M2) sets data-theme. */
+:root {
+  color-scheme: light;
+
+  --color-bg: #ffffff;
+  --color-surface: #f5f5f5;
+  --color-border: #ebebeb;
+  --color-border-strong: #d4d4d4;
+  --color-text: #0f0f0f;
+  --color-text-body: #2b2b2b;
+  --color-text-muted: #636363;
+  --color-accent: #2457f5;
+  --color-accent-hover: #1f4ad6;
+  --color-accent-tint: #e9eefe;
+  --color-primary: #0f0f0f;
+  --color-on-primary: #ffffff;
+  --color-success: #0b7a3e;
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  --shadow-focus: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-accent);
+
+  /* Project covers, a filter value: dimmed about 10% in dark so bright shots don't glare. */
+  --cover-brightness: 1;
+
+  --duration-fast: 150ms;
+  --ease-out: cubic-bezier(0.2, 0, 0, 1);
+
+  --space-section: clamp(4rem, 2rem + 8vw, 7.5rem);
+  --container-page: 72rem;
+  /* The project page's header and case study (spec §6). Not `prose`: Tailwind's 65ch stays. */
+  --container-narrow: 44rem;
+
+  /* The sticky header: a 64 px row plus the 44 px nav row on phones, plus its 1 px border. */
+  --header-height: calc(6.75rem + 1px);
+}
+
+@media (width >= 40rem) {
+  :root {
+    --header-height: calc(4rem + 1px);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+
+    --color-bg: #0b0b0c;
+    --color-surface: #161618;
+    --color-border: #262629;
+    --color-border-strong: #3a3a3e;
+    --color-text: #f5f5f5;
+    --color-text-body: #d4d4d4;
+    --color-text-muted: #a1a1a1;
+    --color-accent: #7c9cff;
+    --color-accent-hover: #a3bbff;
+    --color-accent-tint: #141a2c;
+    --color-primary: #f5f5f5;
+    --color-on-primary: #0f0f0f;
+    --color-success: #4ade80;
+
+    --cover-brightness: 0.9;
+  }
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-bg: #0b0b0c;
+  --color-surface: #161618;
+  --color-border: #262629;
+  --color-border-strong: #3a3a3e;
+  --color-text: #f5f5f5;
+  --color-text-body: #d4d4d4;
+  --color-text-muted: #a1a1a1;
+  --color-accent: #7c9cff;
+  --color-accent-hover: #a3bbff;
+  --color-accent-tint: #141a2c;
+  --color-primary: #f5f5f5;
+  --color-on-primary: #0f0f0f;
+  --color-success: #4ade80;
+
+  --cover-brightness: 0.9;
+}
+
+/* Tailwind's default palette, type scale, radii, shadows and easings are cleared, so only
+   the tokens below exist as utilities. */
+@theme {
+  --color-*: initial;
+  --text-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+  --ease-*: initial;
+}
+
+/* `reference`: the variables are defined above, so Tailwind must not emit them again. */
+@theme inline reference {
+  --color-bg: var(--color-bg);
+  --color-surface: var(--color-surface);
+  --color-border: var(--color-border);
+  --color-border-strong: var(--color-border-strong);
+  --color-text: var(--color-text);
+  --color-body: var(--color-text-body);
+  --color-muted: var(--color-text-muted);
+  --color-accent: var(--color-accent);
+  --color-accent-hover: var(--color-accent-hover);
+  --color-accent-tint: var(--color-accent-tint);
+  --color-primary: var(--color-primary);
+  --color-on-primary: var(--color-on-primary);
+  --color-success: var(--color-success);
+
+  --font-sans: var(--font-inter);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* The `body` size is `text-base`: `text-body` is the body colour. */
+  --text-display: clamp(2.75rem, 1.6rem + 5.2vw, 6rem);
+  --text-display--line-height: 0.95;
+  --text-display--letter-spacing: -0.03em;
+  /* The hero h1 at lg+, where it shares the row with the portrait (7 of 12 columns). */
+  --text-display-hero: clamp(3rem, 1.5rem + 3.2vw, 4.75rem);
+  --text-display-hero--line-height: 0.95;
+  --text-display-hero--letter-spacing: -0.03em;
+  --text-h2: clamp(2rem, 1.4rem + 2.6vw, 3.5rem);
+  --text-h2--line-height: 1.05;
+  --text-h2--letter-spacing: -0.025em;
+  /* Case-study section headings: between the lead and the page h2. */
+  --text-subhead: 1.5rem;
+  --text-subhead--line-height: 1.25;
+  --text-subhead--letter-spacing: -0.02em;
+  --text-h3: 1.25rem;
+  --text-h3--line-height: 1.3;
+  --text-h3--letter-spacing: -0.015em;
+  --text-lead: clamp(1.125rem, 1rem + 0.5vw, 1.5rem);
+  --text-lead--line-height: 1.35;
+  --text-lead--letter-spacing: -0.01em;
+  --text-base: 1rem;
+  --text-base--line-height: 1.5;
+  --text-base--letter-spacing: -0.005em;
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.43;
+  --text-small--letter-spacing: 0;
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1.33;
+  --text-caption--letter-spacing: 0;
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-full: var(--radius-full);
+
+  --shadow-focus: var(--shadow-focus);
+
+  --ease-out: var(--ease-out);
+  --default-transition-duration: var(--duration-fast);
+  --default-transition-timing-function: var(--ease-out);
+
+  --spacing-section: var(--space-section);
+  --container-page: var(--container-page);
+  --container-narrow: var(--container-narrow);
+}
+
+/* The portrait arch (spec §6): a true semicircle on top of the 11:12 box (horizontal radius
+   50% of the width, vertical 11/24 of the height) and the 24 px foot. Elliptical radii that
+   fit the box keep CSS's corner-overlap rule from shrinking the foot, as 9999px would. The
+   clip follows the foot and the sides but leaves room above, so the figure's shoulders are
+   cropped by the arch while the head can rise over its top. */
+@utility shape-arch {
+  border-radius: 50% 50% var(--radius-lg) var(--radius-lg) / 45.8333% 45.8333% var(--radius-lg)
+    var(--radius-lg);
+  clip-path: inset(-15% 0 0 0 round 0 0 var(--radius-lg) var(--radius-lg));
+}
+
+@layer base {
+  html {
+    scroll-padding-top: var(--header-height);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    @apply bg-bg font-sans text-base text-body antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--color-text);
+    font-weight: 500;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* The resting outline colour is transparent too, so `transition-colors` has nothing to
+     animate from currentColor when focus arrives (no outline flash). */
+  *,
+  ::before,
+  ::after {
+    outline-color: transparent;
+  }
+
+  /* The transparent outline keeps a visible ring in forced-colours mode. */
+  :focus-visible {
+    outline: 2px solid transparent;
+    box-shadow: var(--shadow-focus);
+  }
+
+  /* Programmatic focus targets (the skip link's <main>) get no ring of their own. */
+  [tabindex='-1']:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    transition-duration: 0s !important;
+    animation-duration: 0s !important;
+    animation-iteration-count: 1 !important;
+  }
+}

@@ -1,0 +1,30 @@
+import cover from './cover.png'
+
+export const meta = {
+  title: 'E-commerce Checkout Flow',
+  summary:
+    'A three-step checkout with address validation, saved cards and clear error recovery, built to reduce cart abandonment.',
+  stack: ['Next.js', 'React', 'TypeScript', 'Stripe', 'Zod', 'React Hook Form', 'Playwright'],
+  cover,
+  coverAlt:
+    'Placeholder cover: abstract layout of a form with input fields and a button beside an order summary card.',
+  repoUrl: 'https://github.com/jovstern/checkout-flow',
+  date: '2025-02',
+  draft: true,
+}
+
+## Overview
+
+Placeholder case study. A checkout prototype for a small shop, focused on fewer steps and fewer failed payments.
+
+## What I built
+
+Shipping, payment and review steps, inline validation, and a summary that stays in view on wide screens. This text stands in until the real project is written up.
+
+## Decisions
+
+- **Server Actions for every step.** Validation lives in one place, but each step is a round trip.
+
+## What I’d do next
+
+Add wallets such as Apple Pay and measure drop-off per step. Placeholder copy.

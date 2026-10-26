@@ -1,0 +1,30 @@
+import cover from './cover.png'
+
+export const meta = {
+  title: 'Realtime Collaborative Whiteboard',
+  summary:
+    'A multiplayer canvas where a small team sketches, drags sticky notes and sees each other’s cursors.',
+  stack: ['Next.js', 'React', 'TypeScript', 'Yjs', 'WebSockets', 'Canvas API'],
+  cover,
+  coverAlt:
+    'Placeholder cover: abstract layout of a light-blue canvas with a narrow toolbar and scattered rectangles.',
+  repoUrl: 'https://github.com/jovstern/realtime-whiteboard',
+  date: '2025-12',
+  draft: true,
+}
+
+## Overview
+
+Placeholder case study. A shared whiteboard for remote teams who want something lighter than a full design tool.
+
+## What I built
+
+Live cursors, shapes and sticky notes, with offline edits that merge when the connection returns. This text stands in until the real project is written up.
+
+## Decisions
+
+- **CRDTs over a central server.** Merging is automatic and conflict-free, but documents grow and need compaction.
+
+## What I’d do next
+
+Add export to PNG and SVG, and permissions for view-only links. Placeholder copy.

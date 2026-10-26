@@ -1,0 +1,53 @@
+import cover from './cover.png'
+// Project template. To add a project:
+// 1. Create content/projects/<slug>/. The slug is the folder name (lower-case words joined
+//    by hyphens, e.g. my-project) and becomes the URL /projects/<slug>.
+// 2. Copy this file there as index.mdx and put cover.png (16:10, e.g. 1600x1000) beside it.
+// 3. Fill in `meta`. The build checks it against ProjectMetaSchema in app/lib/definitions.ts
+//    and fails, naming the slug and the field, if anything is wrong.
+//
+// Images in the case study: markdown images (![alt](src)) fail the build on purpose, because
+// they have no size. Import the file instead (it must exist in this folder, or the build
+// fails), then render it with next/image so it gets its size and AVIF/WebP:
+//   import Image from 'next/image'
+//   import screenshot from './screenshot.png'
+//   <Image src={screenshot} alt="What the screenshot shows" sizes="(min-width: 44rem) 44rem, 100vw" />
+
+export const meta = {
+  // 1-60 characters.
+  title: 'Project title',
+  // One sentence, 1-160 characters: used on the card and as the meta description.
+  summary: 'What it is and who it is for, in one sentence.',
+  // 1-8 items, each 1-24 characters.
+  stack: ['Next.js', 'TypeScript'],
+  // Must be imported from this folder, so a missing file fails the build.
+  cover,
+  // 1-200 characters: say what the image shows.
+  coverAlt: 'The home page of the project, showing ...',
+  // https only.
+  repoUrl: 'https://github.com/jovstern/project',
+  // Optional, https only. Leave it out until the project is deployed.
+  liveUrl: 'https://project.example.com',
+  // YYYY-MM. Projects are listed newest first.
+  date: '2026-01',
+  // Optional: true shows the project in development and previews, never in production.
+  draft: true,
+}
+
+{/* The suggested headings. Write in the first person, plainly. */}
+
+## Overview
+
+What the project is, who it is for and what problem it solves.
+
+## What I built
+
+The main features and the parts I'm proudest of.
+
+## Decisions
+
+- **A decision.** Why I made it, and what I traded away.
+
+## What I'd do next
+
+What I would improve or add with more time.
