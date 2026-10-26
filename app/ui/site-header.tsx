@@ -25,6 +25,7 @@ export default function SiteHeader() {
             className="-ms-2 inline-flex h-11 items-center rounded-sm px-2 text-h3 font-medium text-text transition-colors hover:text-muted active:text-body"
           >
             {site.name}
+            <span aria-hidden="true">.</span>
           </Link>
         </div>
 

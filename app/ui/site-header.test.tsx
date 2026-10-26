@@ -6,7 +6,9 @@ import SiteHeader from './site-header'
 describe('SiteHeader', () => {
   it('links the wordmark home', () => {
     render(<SiteHeader />)
-    expect(screen.getByRole('link', { name: site.name })).toHaveAttribute('href', '/')
+    const wordmark = screen.getByRole('link', { name: site.name })
+    expect(wordmark).toHaveAttribute('href', '/')
+    expect(wordmark).toHaveTextContent(`${site.name}.`)
   })
 
   it('has Projects, About and Skills in the main navigation', () => {

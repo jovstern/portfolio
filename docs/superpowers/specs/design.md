@@ -5,7 +5,7 @@
 
 ## 1. Goal and audience
 
-Yoav's calling card as a frontend engineer (React, Next.js, TypeScript). Visitors are
+Yoav's calling card as a full-stack engineer (TypeScript; React and Next.js, Node.js, SQL and MongoDB). Visitors are
 **recruiters, hiring managers and engineers**. Within about five seconds they should know
 what Yoav does and builds, and every project, its code, Yoav's LinkedIn (which stands in
 for a CV) and email should be **one click away**. The site is itself a work sample: stable,
@@ -144,28 +144,27 @@ There is no write path (no forms, actions or API).
 ## 6. Routes and screens
 
 Shared shell (`app/layout.tsx`): skip link → `#main`; **header** (sticky, `--color-bg` with a
-1 px bottom hairline; no scroll listener. Contents: wordmark `site.name` (link home; "Yoav"
-until the full name is confirmed) · nav: Projects, About ·
-right: icon links GitHub ↗ and LinkedIn ↗, the theme toggle (M2), and a *secondary* button
-**Email me** (secondary so every view keeps one primary action; M1 review ruling) (`mailto:`; from `sm` down it shrinks to an envelope icon button with the same
-accessible name)); `<main id="main" tabIndex={-1}>`, with `scroll-padding-top` equal to the
+1 px bottom hairline; no scroll listener. Contents: wordmark `site.name` followed by an
+`aria-hidden` period ("Yoav."; the period is header-only, so titles and alt text read "Yoav") ·
+nav: Projects, About, Skills · right: icon links GitHub ↗ and LinkedIn ↗ and the theme toggle
+(M2). Email lives in the hero and the footer (Yoav's change after M1 review)); `<main id="main" tabIndex={-1}>`, with `scroll-padding-top` equal to the
 header height so anchored headings are never hidden under it; **footer** `#contact` (h2
 "Let's talk", the email as a large link with a copy button (M2), LinkedIn, GitHub; no
 year, because `new Date()` needs `io()` under Cache Components and isn't worth it). On
-phones the nav (Projects, About) moves to a second row (no hamburger: only 2 items).
+phones the nav (Projects, About, Skills) moves to a second row (no hamburger: only 3 items).
 
 ### `/` Home
 
 - **Job:** in five seconds, what Yoav does and builds; then the projects.
-- **Primary action:** "View projects" (hero). Secondary: "LinkedIn / CV", plus copying or
-  opening the email.
+- **Primary action:** "View projects" (hero). Secondary: "Email me". LinkedIn (the CV) is the header
+  icon and the footer link, with no separate CV label (Yoav's choice).
 - **Sees first:** the headline (the focal point), then the portrait.
 - **Sections:**
   1. **Hero:** status pill ("● Open to new roles", `--color-success` dot + text, hidden when
-     `openToWork` is false) → greeting ("Hi, I'm Yoav", lead size, muted) → `h1` headline,
-     e.g. "I build fast, accessible web apps with React and Next.js." → lead (one or two
-     sentences) → CTAs (primary "View projects" → `#projects`; secondary "LinkedIn / CV" ↗) →
-     a small row of GitHub and email icon links. **Portrait:** an arch (rounded top
+     `openToWork` is false) → greeting ("Hi, I'm Yoav, a Full-Stack Engineer", lead size, muted) → `h1`
+     headline, e.g. "I build fast, accessible web apps, end to end." → lead
+     (one or two sentences) → CTAs (primary "View projects" → `#projects`; secondary "Email me",
+     `mailto:`, same tab). **Portrait:** an arch (rounded top
      elliptical top radii `50% / 45.83%` (a true semicircle on the 11:12 box) and a
      `--radius-lg` foot, `aspect-ratio: 11/12` (M1 ruling: with the 0.93:1 asset at 108% width,
      4/5 could not give the overflow),
@@ -189,8 +188,10 @@ phones the nav (Projects, About) moves to a second row (no hamburger: only 2 ite
      `:focus-visible`, the `--shadow-focus` ring goes around the whole card; Live and
      Code get their own rings.
   3. **About** `#about`: `h2` "About" in the left column; right column: bio paragraphs
-     (max 65ch), then skills as a 2–3 column grid of plain groups (group name 14 px/500 muted,
-     items as a list), no boxes.
+     (max 65ch).
+  4. **Skills** `#skills`: `h2` "Skills" in the left column; right column: a 2–3 column grid
+     of plain groups (Languages, Frontend, Backend, Testing, Tooling; group name 14 px/500
+     muted, items as a list), no boxes.
 - **States:** content is static, so there is no loading or network-error state. *Empty*
   (no published projects): the grid is replaced by "Projects are on their way. Meanwhile,
   my code is on GitHub." with a GitHub link. *One project*: a single card at half width
